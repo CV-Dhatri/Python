@@ -1,0 +1,20 @@
+# 11. Laptop Purchase 
+# Laptop price = ₹60,000 
+# Discount = 15% 
+# GST = 18% 
+# Calculate: 
+# Discount amount 
+# Price after discount
+
+laptop_price = 60000
+discount = laptop_price * 0.15
+
+price_after_discount = laptop_price - discount
+gst = price_after_discount * 0.18
+final_price = price_after_discount + gst
+
+print("Laptop Price: Rs.", laptop_price)
+print("Discount @ 15%: Rs.", discount)
+print("Price after Discount: Rs.", price_after_discount)
+print("GST @ 18%: Rs.", gst)
+print("Final Price: Rs.", final_price)  

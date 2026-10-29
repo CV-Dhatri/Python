@@ -1,0 +1,32 @@
+# *Challenge Task*  
+# *Bank Loan EMI* 
+# def loan_details(customer_name, loan_amount, years=1, *charges, **details): 
+# Requirements 
+# Print customer name. 
+# Print loan amount. 
+# Print processing charges. 
+# Print interest rate. 
+# Calculate EMI. 
+# Print total repayment.
+
+def loan_details(customer_name, loan_amount, years=1, *charges, **details):
+    print(f"Customer Name: {customer_name}")
+    print(f"Loan Amount: Rs.{loan_amount}")
+
+    if charges:
+        print("Processing Charges:")
+        for charge in charges:
+            print(f"- {charge}")
+    else:
+        print("No processing charges.")
+
+    interest_rate = details.get('interest_rate', 0)
+    print(f"Interest Rate: {interest_rate}%")
+
+    rate = interest_rate / (12 * 100)
+    months = years * 12
+    emi = (loan_amount * rate * (1 + rate) ** months) / ((1 + rate) ** months - 1)
+
+    total_repayment = emi * months
+    print(f"EMI: Rs.{emi:.2f}")
+    print(f"Total Repayment: Rs.{total_repayment:.2f}")
