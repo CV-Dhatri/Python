@@ -1,7 +1,13 @@
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 import mysql.connector
 from mysql.connector import Error
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+env_file = BASE_DIR / ".env"
+
+load_dotenv(dotenv_path=str(env_file), override=True)
 
 DB_CONFIG = {
     "host": os.getenv("DB_HOST", "localhost"),
@@ -11,6 +17,7 @@ DB_CONFIG = {
 }
 
 def get_connection():
+    """Returns a connection to the hospital_db database."""
     try:
         conn = mysql.connector.connect(**DB_CONFIG)
         return conn

@@ -68,8 +68,6 @@ TABLE_DEFINITIONS = [
 ]
 
 def init_database():
-    """Initializes the database, creates schema tables, and inserts initial seed data."""
-    # 1. Connect without DB selected to verify or create hospital_db
     admin_config = DB_CONFIG.copy()
     db_name = admin_config.pop("database", "hospital_db")
 
@@ -84,7 +82,6 @@ def init_database():
         print(f"[Error] Could not initialize database: {e}")
         return
 
-    # 2. Connect to the target database and build tables
     try:
         conn = mysql.connector.connect(**DB_CONFIG)
         cursor = conn.cursor()
@@ -93,7 +90,6 @@ def init_database():
             cursor.execute(ddl)
         print("[OK] All 5 tables created successfully.")
 
-        # 3. Seed starter departments and doctors if table is empty
         cursor.execute("SELECT COUNT(*) FROM departments;")
         if cursor.fetchone()[0] == 0:
             cursor.executemany(
@@ -110,9 +106,9 @@ def init_database():
                 VALUES (%s, %s, %s, %s, %s);
                 """,
                 [
-                    ("Dr. Alice Sharma", 1, "9876543210", 800.00, "10:00-10:30,10:30-11:00"),
-                    ("Dr. Robert Lee", 2, "9876543211", 600.00, "11:00-11:30,11:30-12:00"),
-                    ("Dr. Priya Patel", 3, "9876543212", 500.00, "14:00-14:30,14:30-15:00")
+                    ("Dr. Meridith Grey", 1, "9876543210", 800.00, "10:00-10:30,10:30-11:00"),
+                    ("Dr. Richard Webber", 2, "9876543211", 600.00, "11:00-11:30,11:30-12:00"),
+                    ("Dr. Derek Shepherd", 3, "9876543212", 500.00, "14:00-14:30,14:30-15:00")
                 ]
             )
             conn.commit()
