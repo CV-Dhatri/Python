@@ -2,7 +2,6 @@ import mysql.connector
 from mysql.connector import Error
 from hospital.config import DB_CONFIG
 
-# DDL for all 5 required tables
 TABLE_DEFINITIONS = [
     """
     CREATE TABLE IF NOT EXISTS departments (
@@ -75,7 +74,7 @@ def init_database():
         conn = mysql.connector.connect(**admin_config)
         cursor = conn.cursor()
         cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_name};")
-        print(f"[OK] Database '{db_name}' verified/created.")
+        print(f"Database '{db_name}' verified/created.")
         cursor.close()
         conn.close()
     except Error as e:
@@ -88,7 +87,7 @@ def init_database():
 
         for ddl in TABLE_DEFINITIONS:
             cursor.execute(ddl)
-        print("[OK] All 5 tables created successfully.")
+        print("All 5 tables created successfully.")
 
         cursor.execute("SELECT COUNT(*) FROM departments;")
         if cursor.fetchone()[0] == 0:

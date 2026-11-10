@@ -1,19 +1,11 @@
-"""
-hospital/display.py
-Console formatting helpers using tabulate-style table printing.
-"""
 
 def print_header(title: str):
-    """Prints a styled section header."""
     width = 60
     print("\n" + "=" * width)
     print(title.center(width))
     print("=" * width)
 
 def print_table(headers: list, rows: list):
-    """
-    Renders rows into a clean, aligned console table.
-    """
     if not rows:
         print("\n[!] No records found.\n")
         return

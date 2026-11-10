@@ -1,7 +1,3 @@
-"""
-hospital/validators.py
-Input validators for dates, phone numbers, and choices.
-"""
 
 import re
 from datetime import datetime

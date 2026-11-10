@@ -1,7 +1,4 @@
-"""
-hospital/exceptions.py
-Custom exception classes for Hospital Appointment System.
-"""
+
 
 class HospitalAppError(Exception):
     """Base exception for application errors."""

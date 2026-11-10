@@ -17,7 +17,6 @@ DB_CONFIG = {
 }
 
 def get_connection():
-    """Returns a connection to the hospital_db database."""
     try:
         conn = mysql.connector.connect(**DB_CONFIG)
         return conn
